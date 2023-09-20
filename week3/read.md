@@ -15,7 +15,7 @@
 <img width="406" alt="화면 캡처 2023-09-20 172042" src="https://github.com/BankBoy22/game/assets/48702307/6af12b73-1994-4215-8074-3df168928642">
 <br>
 6. 수평,수직 슬라이드바 생성<br>
-![result](https://github.com/BankBoy22/game/assets/48702307/ad8af7ea-756d-4553-8768-a48e1179083b)
+<img width="406" alt="화면 캡처" src="https://github.com/BankBoy22/game/assets/48702307/ad8af7ea-756d-4553-8768-a48e1179083b">
 <br>
 8. 화살표 이동,스페이스로 방향전환 구현<br>
 <img width="616" alt="화면 캡처 2023-09-20 172233" src="https://github.com/BankBoy22/game/assets/48702307/1e8ef0a7-b3e3-4977-b6ab-264719414820">
