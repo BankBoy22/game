@@ -1,0 +1,31 @@
+1."When faced with a difficult decision, do you tend to follow your heart or your head?"
+A. Follow my heart: 감정을 따라가는 경향이 있습니다.
+B. Follow my head: 논리적인 판단을 우선시합니다.
+
+2."How do you react when you encounter an unexpected challenge?"
+A. Embrace it as an opportunity for growth: 예상치 못한 도전을 성장의 기회로 받아들입니다.
+B. Feel stressed and overwhelmed: 스트레스를 느끼고 압도당합니다.
+
+3."In social situations, do you typically prefer to be the center of attention or stay in the background?"
+A. Center of attention: 관심의 중심에 있기를 선호합니다.
+B. Stay in the background: 배경에 머물기를 선호합니다.
+
+4."When setting goals, do you prioritize achieving them as quickly as possible or take your time and enjoy the journey?"
+A. Achieve them quickly: 목표를 빨리 달성하기를 우선시합니다.
+B. Take my time and enjoy the journey: 여정을 즐기면서 시간을 두고 목표를 달성하기를 선호합니다.
+
+5."How do you handle criticism from others?"
+A. Take it as constructive feedback and try to improve: 비판을 건설적인 피드백으로 받아들이고 개선하려 합니다.
+B. Feel hurt or defensive: 비판에 상처받거나 방어적으로 반응합니다.
+
+6."When facing a tough problem, are you more likely to rely on logic and analysis or trust your intuition?"
+A. Rely on logic and analysis: 논리와 분석을 믿고 어려운 문제를 해결하려 합니다.
+B. Trust my intuition: 직관을 믿고 어려운 문제를 해결하려 합니다.
+
+7."In your free time, do you prefer solitary activities like reading or group activities with friends?"
+A. Solitary activities: 혼자 있는 활동을 즐깁니다.
+B. Group activities with friends: 친구들과 함께 하는 활동을 즐깁니다.
+
+8."When making a big decision, do you consult with others for their opinions or trust your instincts?"
+A. Consult with others: 다른 사람의 의견을 듣고 결정합니다.
+B. Trust my instincts: 본능을 믿고 결정합니다.
