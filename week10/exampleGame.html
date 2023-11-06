@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>간단한 게임</title>
+</head>
+<body>
+    <script>
+        var myGamePiece; // 플레이어 오브젝트
+        var myObstacles = []; // 장애물 오브젝트 배열
+        var myScore; // 점수
+        var ctx; // 캔버스 컨텍스트
+
+        // 게임을 시작하는 함수 = 즉 Unity의 Start()와 비슷한 역할
+        function startGame() {
+            myGamePiece = new component(30, 30, "red", 10, 120); // 플레이어 오브젝트
+            myScore = new component("30px", "Consolas", "black", 280, 40, "text"); // 점수
+            myGameArea.start();
+        }
+
+        // 게임 영역을 정의하는 객체
+        var myGameArea = {
+            canvas: document.createElement("canvas"),
+            start: function () {
+                this.canvas.width = 480;
+                this.canvas.height = 270;
+                this.context = this.canvas.getContext("2d");
+                document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+                this.frameNo = 0;
+                this.interval = setInterval(updateGameArea, 20); // 게임 루프 시작
+            },
+            clear: function () {
+                this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+            },
+            stop: function () {
+                clearInterval(this.interval);
+            }
+        };
+
+        function everyinterval(n) {
+            if ((myGameArea.frameNo / n) % 1 == 0) {
+                return true;
+            }
+            return false;
+        }
+
+        function stopMove() {
+            myGamePiece.speedX = 0;
+            myGamePiece.speedY = 0;
+        }
+
+        // 게임 오브젝트를 정의하는 함수
+        function component(width, height, color, x, y, type) {
+            this.type = type; // 오브젝트 타입
+            this.width = width;
+            this.height = height;
+            this.speedX = 0;
+            this.speedY = 0;
+            this.x = x;
+            this.y = y;
+            if (type === "text") {
+                this.text = color; // 텍스트 내용
+            }
+            this.update = function () {
+                ctx = myGameArea.context;
+                if (this.type === "text") {
+                    ctx.font = this.width + " " + this.height;
+                    ctx.fillStyle = color;
+                    ctx.fillText(this.text, this.x, this.y);
+                } else {
+                    ctx.fillStyle = color;
+                    ctx.fillRect(this.x, this.y, this.width, this.height);
+                }
+            }
+            this.newPos = function () {
+                this.x += this.speedX;
+                this.y += this.speedY;
+            }
+            this.crashWith = function (objectobj) {
+                var myleft = this.x;
+                var myright = this.x + this.width;
+                var mytop = this.y;
+                var mybottom = this.y + this.height;
+                var otherleft = objectobj.x;
+                var otherright = objectobj.x + objectobj.width;
+                var othertop = objectobj.y;
+                var otherbottom = objectobj.y + objectobj.height;
+                var crash = true;
+                if (
+                    mybottom < othertop ||
+                    mytop > otherbottom ||
+                    myright < otherleft ||
+                    myleft > otherright
+                ) {
+                    crash = false;
+                }
+                return crash;
+            }
+        }
+
+        // 게임 루프에서 호출할 함수 = 즉 Unity의 Update()와 비슷한 역할
+        function updateGameArea() {
+            var x, height, gap, minHeight, maxHeight, minGap, maxGap;
+            for (i = 0; i < myObstacles.length; i += 1) {
+                if (myGamePiece.crashWith(myObstacles[i])) {
+                    myGameArea.stop();
+                    return;
+                }
+            }
+            myGameArea.clear();
+            myGameArea.frameNo += 1;
+            if (myGameArea.frameNo == 1 || everyinterval(150)) {
+                x = myGameArea.canvas.width;
+                minHeight = 20;
+                maxHeight = 200;
+                height = Math.floor(
+                    Math.random() * (maxHeight - minHeight + 1) + minHeight
+                );
+                minGap = 50;
+                maxGap = 200;
+                gap = Math.floor(Math.random() * (maxGap - minGap + 1) + minGap);
+                myObstacles.push(new component(10, height, "green", x, 0));
+                myObstacles.push(new component(10, x - height - gap, "green", x, height + gap));
+            }
+            for (i = 0; i < myObstacles.length; i += 1) {
+                myObstacles[i].x += -1;
+                myObstacles[i].update();
+            }
+            myScore.text = "SCORE: " + myGameArea.frameNo;
+            myScore.update();
+            myGamePiece.newPos();
+            myGamePiece.update();
+        }
+
+        function moveup() {
+            myGamePiece.speedY -= 1;
+        }
+
+        function movedown() {
+            myGamePiece.speedY += 1;
+        }
+
+        function moveleft() {
+            myGamePiece.speedX -= 1;
+        }
+
+        function moveright() {
+            myGamePiece.speedX += 1;
+        }
+    </script>
+    <button onclick="startGame()">START</button>
+    <button onmousedown="moveup()" onmouseup="stopMove()" ontouchstart="moveup()">UP</button>
+    <button onmousedown="movedown()" onmouseup="stopMove()" ontouchstart="movedown()">DOWN</button>
+    <button onmousedown="moveleft()" onmouseup="stopMove()" ontouchstart="moveleft()">LEFT</button>
+    <button onmousedown="moveright()" onmouseup="stopMove()" ontouchstart="moveright()">RIGHT</button>
+</body>
+</html>
