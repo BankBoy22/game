@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title Screen</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #1a1a1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: white;
+            font-family: 'Arial', sans-serif;
+        }
+
+        h1 {
+            font-size: 3em;
+            text-align: center;
+            animation: moveTitle 1s infinite alternate; 
+        }
+
+        @keyframes moveTitle {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(20px);
+            }
+        }
+
+        button {
+            font-size: 1.5em; 
+            padding: 10px; 
+            margin-top: 20px;
+            color : white;
+            cursor: pointer; 
+            background-color: #4CAF50;
+            border: none; 
+            border-radius: 8px; 
+        }
+
+        #modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            align-items: center;
+            justify-content: center;
+        }
+
+        #modal-content {
+            background: #333;
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+        }
+
+        #close-btn {
+            cursor: pointer;
+            font-size: 1em;
+            background: #666;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        #difficulty-modal {
+            display: none;
+            background: rgba(0, 0, 0, 0.5);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #difficulty-modal-content {
+            background: #333;
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+        }
+
+        .difficulty-btn {
+            font-size: 1.5em;
+            margin: 10px;
+            padding: 10px;
+            color: white;
+            cursor: pointer;
+            background-color: #4CAF50;
+            border: none; 
+            border-radius: 8px;
+        }
+
+        .difficulty-btn:hover {
+            background-color: #45a049;
+        }
+
+        #gameCanvas {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas" width="300" height="300"></canvas>
+    <script type = "importmap">
+        {
+            "imports": {
+                "three": "https://threejs.org/build/three.module.js",
+                "GLTFLoader": "https://threejs.org/examples/jsm/loaders/GLTFLoader.js",
+                "CANNON": "https://cdnjs.cloudflare.com/ajax/libs/cannon.js/0.6.2/cannon.min.js"
+            }
+        }
+    </script>
+    <script type="module">
+        import soundManager from './soundManager.js';
+        //gltf 파일을 불러오기 위한 로더
+        import { GLTFLoader } from 'https://threejs.org/examples/jsm/loaders/GLTFLoader.js';
+        //Three.js의 기본적인 요소들을 가져옴
+        import * as THREE from 'https://threejs.org/build/three.module.js';
+        //Cannon.js의 기본적인 요소들을 가져옴
+        import * as CANNON from 'https://cdnjs.cloudflare.com/ajax/libs/cannon.js/0.6.2/cannon.min.js';
+
+        // 페이지 로딩 후 1초 뒤에 배경음악 시작
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(() => {
+                soundManager.initAudioContext();
+                soundManager.loadSound("sound/Title.mp3", (error) => {
+                    if (error) {
+                        console.error("배경음악 로딩 중 에러 발생:", error);
+                    } else {
+                        console.log("배경음악이 성공적으로 로딩되었습니다!");
+                        soundManager.play();
+                    }
+                });
+            }, 1000);
+        });
+
+        let scene = new THREE.Scene();
+        let renderer = new THREE.WebGLRenderer({canvas: gameCanvas, antialias: true});
+        renderer.outputEncoding = THREE.sRGBEncoding;
+        document.body.appendChild(renderer.domElement);
+
+        let camera = new THREE.PerspectiveCamera(30, 1);
+        camera.position.set(0, 30, 20);
+        camera.lookAt(0, 0, 0);
+        let light = new THREE.DirectionalLight(0xffffff, 10);
+        scene.add(light);
+        //엠비언트 라이트 추가
+        let ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+        scene.add(ambientLight);
+
+        let loader = new GLTFLoader();
+        loader.load('model/tokyo_blur/scene.gltf', function(gltf){
+            //스케일 조정
+            gltf.scene.scale.set(5, 5, 5);
+            // 화질 조정
+            gltf.scene.traverse(function(child){
+                if(child.isMesh){
+                    child.castShadow = true;
+                    child.receiveShadow = true;
+                }
+            });
+            scene.add(gltf.scene);
+            function animate(){
+                requestAnimationFrame(animate);
+                gltf.scene.rotation.y += 0.01;
+                renderer.render(scene, camera);
+            }
+            animate();
+        });
+
+    </script>
+
+    <div>
+        <h1>Canvas Game</h1>
+        <button onclick="startGame()">Start Game</button><br>
+        <button onclick="showGameInstructions()">Game Instructions</button><br>
+        <button onclick="exitGame()">Exit Game</button>
+    </div>
+
+    <div id="modal">
+        <div id="modal-content">
+            <p>Game Instructions:</p>
+            <p>1. Use arrow keys to move.</p>
+            <p>2. Press the space bar to jump.</p>
+            <button id="close-btn" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <div id="difficulty-modal">
+        <div id="difficulty-modal-content">
+            <p>Select Difficulty:</p>
+            <button class="difficulty-btn" onclick="startGameWithDifficulty('easy')">Easy</button>
+            <button class="difficulty-btn" onclick="startGameWithDifficulty('normal')">Normal</button>
+            <button class="difficulty-btn" onclick="startGameWithDifficulty('hard')">Hard</button>
+            <button id="close-btn" onclick="document.getElementById('difficulty-modal').style.display='none'">Cancel</button>
+        </div>
+    </div>
+
+    <script>
+        function startGame() {
+            const difficultyModal = document.getElementById('difficulty-modal');
+            difficultyModal.style.display = 'flex';
+        }
+
+        function exitGame() {
+            window.close();
+        }
+
+        function showGameInstructions() {
+            const modal = document.getElementById('modal');
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            modal.style.display = 'none';
+        }
+
+        function startGameWithDifficulty(difficulty) {
+            // 선택한 난이도를 포함하여 Scene.html로 리다이렉션
+            localStorage.setItem('difficulty', difficulty);
+            window.location.href = `Scene.html?difficulty=${difficulty}`;
+        }
+    </script>
+</body>
+</html>
