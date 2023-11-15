@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Game Over</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        font-family: 'Arial', sans-serif;
+        background-color: #111;
+        color: #fff;
+      }
+
+      #gameCanvas {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+
+      #gameOverScreen {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        display: none;
+      }
+
+      h1, h2 {
+        margin: 0;
+        padding: 0;
+      }
+
+      h1 {
+        font-size: 3em;
+      }
+
+      h2 {
+        font-size: 2em;
+        margin-top: 10px;
+      }
+
+      #score {
+        color: #FFD700; /* 금색 */
+        font-weight: bold;
+      }
+
+      #gotoTitleButton {
+        font-size: 1.5em;
+        padding: 10px;
+        cursor: pointer;
+        background-color: #4CAF50; /* 초록색 */
+        color: white;
+        border: none;
+        border-radius: 5px;
+        margin-top: 20px;
+      }
+
+      #gotoTitleButton:hover {
+        background-color: #45a049; /* 더 진한 초록색 */
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="gameCanvas"></canvas>
+    <div id="gameOverScreen">
+      <h1>Game Over!</h1>
+      <h2>Score: <span id="score">" "</span> points</h2>
+      <button id="gotoTitleButton">Go to Title</button>
+    </div>
+
+    <script src="https://threejs.org/build/three.min.js"></script>
+    <script src="https://unpkg.com/three@0.141.0/examples/jsm/loaders/GLTFLoader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cannon.js/0.6.2/cannon.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.1/howler.core.min.js"></script>
+
+    <script>
+      //게임 오버 사운드
+      const gameOverSound = new Howl({
+        src: ['sound/gameover.mp3'],
+        volume: 0.5,
+      });
+      const clickSound = new Howl({
+        src: ['sound/click.mp3'],
+        volume: 0.5,
+      });
+      gameOverSound.play();
+
+      // 게임 오버 화면 표시
+      function showGameOverScreen(score) {
+        const gameOverScreen = document.getElementById('gameOverScreen');
+        gameOverScreen.style.display = 'block';
+
+        // Score 표시
+        const scoreElement = document.getElementById('score');
+        scoreElement.textContent = score;
+
+        // Goto Title 버튼 이벤트 리스너 등록
+        const gotoTitleButton = document.getElementById('gotoTitleButton');
+        gotoTitleButton.addEventListener('click', gotoTitle);
+      }
+
+      // Title 화면으로 이동
+      function gotoTitle() {
+        clickSound.play();
+        window.location.href = 'Title.html';
+      }
+
+      // 게임 오버 발생 시 호출
+      function handleGameOver() {
+        // localStorage에서 score 가져오기
+        const score = localStorage.getItem('score');
+        if (score) {
+          // 여기에 게임 오버 발생 시 실행할 코드 추가
+          showGameOverScreen(score);
+        } else {
+          console.error('localStorage에서 score를 찾을 수 없습니다.');
+        }
+      }
+
+      // 여기에 게임 관련 코드 추가
+
+      handleGameOver();
+    </script>
+  </body>
+</html>
