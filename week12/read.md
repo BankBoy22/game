@@ -6,4 +6,8 @@
 2. Rolling Ball<br>
 ![12주차과제](https://github.com/BankBoy22/game/assets/48702307/2386ebf1-8d0c-4556-9c30-7395b040b215)
 ## 1. 밸런스 게임
-
+위 예제에서는 cube와 sphere 오브젝트를 통해 간단한 밸런스 게임을 구현하였습니다.<br>
+![PlaneMove코드](https://github.com/BankBoy22/game/assets/48702307/72a9bb25-44ed-44c2-be61-a938a9082cc3)
+위의 코드는 키 입력을 통해 바닥 큐브의 회전을 변경하는 코드입니다.<br>
+Update()함수 안에 기능을 넣음으로써 매 프레임마다 실행되게끔 하며, Quaternion.AngleAxis(angle, axis) 함수에 키입력값과 축 값을 넣음으로써
+회전을 수행합니다.
