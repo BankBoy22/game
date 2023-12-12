@@ -8,123 +8,123 @@ using UnityEngine.UI;
 public class Gotcha_System : MonoBehaviour
 {
     public TextMeshProUGUI nameText;
-    public Image imageRenderer; // ÀÌ¹ÌÁö¸¦ Ç¥½ÃÇÒ SpriteRenderer
+    public Image imageRenderer; // ì´ë¯¸ì§€ë¥¼ í‘œì‹œí•  SpriteRenderer
 
-    public string[] names; // ÅØ½ºÆ® ¹è¿­
-    public Sprite[] images; // ÀÌ¹ÌÁö ¹è¿­
+    public string[] names; // í…ìŠ¤íŠ¸ ë°°ì—´
+    public Sprite[] images; // ì´ë¯¸ì§€ ë°°ì—´
 
-    private int currentIndex = 0; // ÇöÀç ¹è¿­ ÀÎµ¦½º
+    private int currentIndex = 0; // í˜„ì¬ ë°°ì—´ ì¸ë±ìŠ¤
 
-    public GameObject gotchaPanel; // »Ì±â °á°ú¸¦ Ç¥½ÃÇÒ ÆĞ³Î
-    public Transform cardPanel; // Ä«µå ¹öÆ°ÀÌ »ı¼ºµÉ ÆĞ³Î
-    public GameObject cardButtonPrefab; // Ä«µå ¹öÆ° ÇÁ¸®ÆÕ
-    private List<GameObject> createdCards = new List<GameObject>(); // »ı¼ºµÈ Ä«µåµéÀ» ÀúÀåÇÒ ¸®½ºÆ®
+    public GameObject gotchaPanel; // ë½‘ê¸° ê²°ê³¼ë¥¼ í‘œì‹œí•  íŒ¨ë„
+    public Transform cardPanel; // ì¹´ë“œ ë²„íŠ¼ì´ ìƒì„±ë  íŒ¨ë„
+    public GameObject cardButtonPrefab; // ì¹´ë“œ ë²„íŠ¼ í”„ë¦¬íŒ¹
+    private List<GameObject> createdCards = new List<GameObject>(); // ìƒì„±ëœ ì¹´ë“œë“¤ì„ ì €ì¥í•  ë¦¬ìŠ¤íŠ¸
 
 
-    // µÚ·Î°¡±â ¹öÆ°À» ´­·¶À» ¶§ È£ÃâµÇ´Â ÇÔ¼ö
+    // ë’¤ë¡œê°€ê¸° ë²„íŠ¼ì„ ëˆŒë €ì„ ë•Œ í˜¸ì¶œë˜ëŠ” í•¨ìˆ˜
     public void OnGameBackButtonClicked()
     {
         SceneManager.LoadScene("MainScreen");
     }
     public void OnRightButtonClicked()
     {
-        // ¹è¿­ ÀÎµ¦½º Áõ°¡
+        // ë°°ì—´ ì¸ë±ìŠ¤ ì¦ê°€
         currentIndex++;
 
-        // ¹è¿­ ÀÎµ¦½º°¡ ¹è¿­ ±æÀÌ¸¦ ÃÊ°úÇÏ¸é Ã³À½À¸·Î µ¹¾Æ°¨
+        // ë°°ì—´ ì¸ë±ìŠ¤ê°€ ë°°ì—´ ê¸¸ì´ë¥¼ ì´ˆê³¼í•˜ë©´ ì²˜ìŒìœ¼ë¡œ ëŒì•„ê°
         if (currentIndex >= names.Length)
         {
             currentIndex = 0;
         }
 
-        // »õ·Î¿î ÅØ½ºÆ® ¹× ÀÌ¹ÌÁö Ç¥½Ã
+        // ìƒˆë¡œìš´ í…ìŠ¤íŠ¸ ë° ì´ë¯¸ì§€ í‘œì‹œ
         UpdateTextAndImage();
     }
 
-    // ¿ŞÂÊ ¹öÆ°À» ´­·¶À» ¶§ È£ÃâµÇ´Â ÇÔ¼ö
+    // ì™¼ìª½ ë²„íŠ¼ì„ ëˆŒë €ì„ ë•Œ í˜¸ì¶œë˜ëŠ” í•¨ìˆ˜
     public void OnLeftButtonClicked()
     {
-        // ¹è¿­ ÀÎµ¦½º °¨¼Ò
+        // ë°°ì—´ ì¸ë±ìŠ¤ ê°ì†Œ
         currentIndex--;
 
-        // ¹è¿­ ÀÎµ¦½º°¡ À½¼ö°¡ µÇ¸é ¸¶Áö¸·À¸·Î µ¹¾Æ°¨
+        // ë°°ì—´ ì¸ë±ìŠ¤ê°€ ìŒìˆ˜ê°€ ë˜ë©´ ë§ˆì§€ë§‰ìœ¼ë¡œ ëŒì•„ê°
         if (currentIndex < 0)
         {
             currentIndex = names.Length - 1;
         }
 
-        // »õ·Î¿î ÅØ½ºÆ® ¹× ÀÌ¹ÌÁö Ç¥½Ã
+        // ìƒˆë¡œìš´ í…ìŠ¤íŠ¸ ë° ì´ë¯¸ì§€ í‘œì‹œ
         UpdateTextAndImage();
     }
 
-    // ¹è¿­ÀÇ ÇöÀç ÀÎµ¦½º¿¡ ÇØ´çÇÏ´Â ÅØ½ºÆ® ¹× ÀÌ¹ÌÁö¸¦ Ç¥½ÃÇÏ´Â ÇÔ¼ö
+    // ë°°ì—´ì˜ í˜„ì¬ ì¸ë±ìŠ¤ì— í•´ë‹¹í•˜ëŠ” í…ìŠ¤íŠ¸ ë° ì´ë¯¸ì§€ë¥¼ í‘œì‹œí•˜ëŠ” í•¨ìˆ˜
     private void UpdateTextAndImage()
     {
-        // ÇöÀç ÀÎµ¦½º¿¡ ÇØ´çÇÏ´Â ÅØ½ºÆ®¸¦ Ç¥½Ã
+        // í˜„ì¬ ì¸ë±ìŠ¤ì— í•´ë‹¹í•˜ëŠ” í…ìŠ¤íŠ¸ë¥¼ í‘œì‹œ
         if (nameText != null && currentIndex < names.Length)
         {
             nameText.text = names[currentIndex];
         }
 
-        // ÇöÀç ÀÎµ¦½º¿¡ ÇØ´çÇÏ´Â ÀÌ¹ÌÁö¸¦ Ç¥½Ã
+        // í˜„ì¬ ì¸ë±ìŠ¤ì— í•´ë‹¹í•˜ëŠ” ì´ë¯¸ì§€ë¥¼ í‘œì‹œ
         if (imageRenderer != null && currentIndex < images.Length)
         {
             imageRenderer.sprite = images[currentIndex];
         }
     }
 
-    // 1È¸ »Ì±â ¹öÆ°À» ´­·¶À» ¶§ È£ÃâµÇ´Â ÇÔ¼ö
+    // 1íšŒ ë½‘ê¸° ë²„íŠ¼ì„ ëˆŒë €ì„ ë•Œ í˜¸ì¶œë˜ëŠ” í•¨ìˆ˜
     public void OnOneDrawButtonClicked()
     {
         CreateSingleCard();
     }
 
-    // 10È¸ »Ì±â ¹öÆ°À» ´­·¶À» ¶§ È£ÃâµÇ´Â ÇÔ¼ö
+    // 10íšŒ ë½‘ê¸° ë²„íŠ¼ì„ ëˆŒë €ì„ ë•Œ í˜¸ì¶œë˜ëŠ” í•¨ìˆ˜
     public void OnTenDrawButtonClicked()
     {
         CreateMultipleCards(10);
     }
 
-    // Ä«µå¸¦ Áß¾Ó¿¡ »ı¼ºÇÏ´Â ÇÔ¼ö
+    // ì¹´ë“œë¥¼ ì¤‘ì•™ì— ìƒì„±í•˜ëŠ” í•¨ìˆ˜
     private void CreateSingleCard()
     {
-        DestroyPreviousCards(); // ÀÌÀü¿¡ »ı¼ºµÈ Ä«µåµé Á¦°Å
+        DestroyPreviousCards(); // ì´ì „ì— ìƒì„±ëœ ì¹´ë“œë“¤ ì œê±°
 
         gotchaPanel.SetActive(true);
 
         GameObject cardButton = Instantiate(cardButtonPrefab, cardPanel);
-        createdCards.Add(cardButton); // ¸®½ºÆ®¿¡ Ãß°¡
-        // Ãß°¡ ¼³Á¤ °¡´É (ÀÌ¹ÌÁö, ÀÌº¥Æ® µî)
+        createdCards.Add(cardButton); // ë¦¬ìŠ¤íŠ¸ì— ì¶”ê°€
+        // ì¶”ê°€ ì„¤ì • ê°€ëŠ¥ (ì´ë¯¸ì§€, ì´ë²¤íŠ¸ ë“±)
 
-        // Áß¾Ó¿¡ À§Ä¡½ÃÅ´
+        // ì¤‘ì•™ì— ìœ„ì¹˜ì‹œí‚´
         cardButton.transform.localPosition = Vector3.zero;
     }
 
-    // 10°³ÀÇ Ä«µå¸¦ ³ª¿­ÇÏ¿© »ı¼º
+    // 10ê°œì˜ ì¹´ë“œë¥¼ ë‚˜ì—´í•˜ì—¬ ìƒì„±
     private void CreateMultipleCards(int count)
     {
-        DestroyPreviousCards(); // ÀÌÀü¿¡ »ı¼ºµÈ Ä«µåµé Á¦°Å
+        DestroyPreviousCards(); // ì´ì „ì— ìƒì„±ëœ ì¹´ë“œë“¤ ì œê±°
 
         gotchaPanel.SetActive(true);
 
-        const float cardSpacingX = 300f; // Ä«µå °£°İ Á¶Àı
+        const float cardSpacingX = 300f; // ì¹´ë“œ ê°„ê²© ì¡°ì ˆ
         const float cardSpacingY = 400f;
 
         for (int i = 0; i < count; i++)
         {
             GameObject cardButton = Instantiate(cardButtonPrefab, cardPanel);
-            createdCards.Add(cardButton); // ¸®½ºÆ®¿¡ Ãß°¡
+            createdCards.Add(cardButton); // ë¦¬ìŠ¤íŠ¸ì— ì¶”ê°€
 
-            // À§Ä¡ ¼³Á¤ (5°³¾¿ 2ÁÙ·Î ³ª¿­)
+            // ìœ„ì¹˜ ì„¤ì • (5ê°œì”© 2ì¤„ë¡œ ë‚˜ì—´)
             float xPos = -600f + (i % 5) * cardSpacingX;
             float yPos = 128f - ((i / 5) * cardSpacingY);
             cardButton.transform.localPosition = new Vector3(xPos, yPos, 0f);
 
-            // Ãß°¡ ¼³Á¤ °¡´É (ÀÌ¹ÌÁö, ÀÌº¥Æ® µî)
+            // ì¶”ê°€ ì„¤ì • ê°€ëŠ¥ (ì´ë¯¸ì§€, ì´ë²¤íŠ¸ ë“±)
         }
     }
 
-    // ÀÌÀü¿¡ »ı¼ºµÈ Ä«µåµéÀ» Á¦°ÅÇÏ´Â ÇÔ¼ö
+    // ì´ì „ì— ìƒì„±ëœ ì¹´ë“œë“¤ì„ ì œê±°í•˜ëŠ” í•¨ìˆ˜
     private void DestroyPreviousCards()
     {
         foreach (var card in createdCards)
