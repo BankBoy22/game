@@ -11,7 +11,7 @@ public class EnemyStats : MonoBehaviour
     public TextMeshProUGUI maxHPText;
     public Slider healthSlider;
 
-    public string characterName = "ÈÄ½Ã±¸·Î ¸Ş±¸¹Ì";
+    public string characterName = "í›„ì‹œêµ¬ë¡œ ë©”êµ¬ë¯¸";
     public int maxHealth = 100;
     public int currentHealth;
 
@@ -30,7 +30,7 @@ public class EnemyStats : MonoBehaviour
 
     void Update()
     {
-        // ÀûÀÇ ÇöÀç Ã¼·ÂÀ» Slider UI¿¡ ¹İ¿µ
+        // ì ì˜ í˜„ì¬ ì²´ë ¥ì„ Slider UIì— ë°˜ì˜
         healthSlider.value = currentHealth;
         currentHPText.text = currentHealth.ToString();
 
@@ -49,7 +49,7 @@ public class EnemyStats : MonoBehaviour
 
     void Die()
     {
-        // TODO: Ä³¸¯ÅÍ°¡ »ç¸ÁÇßÀ» ¶§ÀÇ ·ÎÁ÷ Ãß°¡
+        // TODO: ìºë¦­í„°ê°€ ì‚¬ë§í–ˆì„ ë•Œì˜ ë¡œì§ ì¶”ê°€
         Debug.Log(characterName + " died!");
     }
 }
