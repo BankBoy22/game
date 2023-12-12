@@ -1,4 +1,5 @@
 # 주술회전 모바일 게임 제작
+저작권 관계상 Script 파일만 업로드 하였습니다. 제작기간은 일주일 이며, 기말 과제 제출용 입니다.
 ## 타이틀 씬
 ![타이틀화면](https://github.com/BankBoy22/game/assets/48702307/4a5c4ccd-94ef-49ea-b80b-c2a01674c228)
 ![타이틀화면_환경설정](https://github.com/BankBoy22/game/assets/48702307/2153a4e0-fc4e-4309-a573-f2dea8685928)
