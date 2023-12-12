@@ -12,13 +12,13 @@ public class ImageRotation : MonoBehaviour
     private float currentRotationTime = 0f;
     private float initialRotationSpeed;
 
-    public Sprite[] imageArray; // ÀÌ¹ÌÁö ¹è¿­ Ãß°¡
-    private Button button; // Button ÄÄÆ÷³ÍÆ® Ãß°¡
+    public Sprite[] imageArray; // ì´ë¯¸ì§€ ë°°ì—´ ì¶”ê°€
+    private Button button; // Button ì»´í¬ë„ŒíŠ¸ ì¶”ê°€
 
     private void Start()
     {
         initialRotationSpeed = rotationSpeed;
-        button = GetComponent<Button>(); // ½ºÅ©¸³Æ®°¡ ºÎÂøµÈ ¿ÀºêÁ§Æ®ÀÇ Button ÄÄÆ÷³ÍÆ®¸¦ °¡Á®¿È
+        button = GetComponent<Button>(); // ìŠ¤í¬ë¦½íŠ¸ê°€ ë¶€ì°©ëœ ì˜¤ë¸Œì íŠ¸ì˜ Button ì»´í¬ë„ŒíŠ¸ë¥¼ ê°€ì ¸ì˜´
     }
 
     private void Update()
@@ -27,38 +27,38 @@ public class ImageRotation : MonoBehaviour
         {
             if (currentRotationTime < rotationDuration)
             {
-                // YÃàÀ» ±âÁØÀ¸·Î È¸Àü
+                // Yì¶•ì„ ê¸°ì¤€ìœ¼ë¡œ íšŒì „
                 transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
                 currentRotationTime += Time.deltaTime;
                 rotationSpeed = Mathf.Lerp(initialRotationSpeed, 0f, currentRotationTime / rotationDuration);
             }
             else
             {
-                // È¸ÀüÀÌ ³¡³ª¸é ÀÌ¹ÌÁö¸¦ ·£´ıÀ¸·Î ¼±ÅÃÇÏ¿© º¯°æ
+                // íšŒì „ì´ ëë‚˜ë©´ ì´ë¯¸ì§€ë¥¼ ëœë¤ìœ¼ë¡œ ì„ íƒí•˜ì—¬ ë³€ê²½
                 ChangeImage();
                 isRotating = false;
             }
         }
     }
 
-    // ÀÌ¹ÌÁö¸¦ Å¬¸¯ÇßÀ» ¶§ È£ÃâµÇ´Â ÇÔ¼ö
+    // ì´ë¯¸ì§€ë¥¼ í´ë¦­í–ˆì„ ë•Œ í˜¸ì¶œë˜ëŠ” í•¨ìˆ˜
     public void OnImageClick()
     {
-        // ÃÊ±âÈ­
+        // ì´ˆê¸°í™”
         currentRotationTime = 0f;
         rotationSpeed = initialRotationSpeed;
         isRotating = true;
     }
 
-    // ÀÌ¹ÌÁö¸¦ º¯°æÇÏ´Â ÇÔ¼ö
+    // ì´ë¯¸ì§€ë¥¼ ë³€ê²½í•˜ëŠ” í•¨ìˆ˜
     private void ChangeImage()
     {
         if (button != null && imageArray.Length > 0)
         {
-            // ·£´ı ÀÌ¹ÌÁö ¼±ÅÃ
+            // ëœë¤ ì´ë¯¸ì§€ ì„ íƒ
             Sprite randomSprite = imageArray[Random.Range(0, imageArray.Length)];
 
-            // ÀÌ¹ÌÁö º¯°æ
+            // ì´ë¯¸ì§€ ë³€ê²½
             button.image.sprite = randomSprite;
         }
         else
@@ -66,6 +66,6 @@ public class ImageRotation : MonoBehaviour
             Debug.LogError("Button component not found on the script-attached object or imageArray is empty.");
         }
 
-        Debug.Log("ÀÌ¹ÌÁö º¯°æ");
+        Debug.Log("ì´ë¯¸ì§€ ë³€ê²½");
     }
 }
