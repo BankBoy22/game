@@ -42,4 +42,7 @@ https://assetstore.unity.com/packages/3d/environments/historic/kcisa-jejumok-gwa
 
 https://assetstore.unity.com/packages/audio/music/25-fantasy-rpg-game-tracks-music-pack-240154 (배경음)​<br>
 
-https://sketchfab.com/tiffany__37 - fbx를 다운받아 사용
+https://sketchfab.com/tiffany__37 - fbx를 다운받아 사용 <br>
+青のすみか / キタニタツヤ - Where Our Blue Is / Tatsuya Kitani​
+
+https://www.youtube.com/watch?v=zuoVd2QNxJo
