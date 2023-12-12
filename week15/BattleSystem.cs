@@ -11,12 +11,12 @@ public class BattleSystem : MonoBehaviour
     public GameObject Gameoverpanel;
     public TextMeshProUGUI battleLogText;
     public TextMeshProUGUI battleResultText;
-    public string text = "°ÔÀÓ ½ÃÀÛ!!";
+    public string text = "ê²Œì„ ì‹œì‘!!";
 
 
     void Start()
     {
-        // °ÔÀÓ ½ÃÀÛ ½Ã ÃÊ±âÈ­
+        // ê²Œì„ ì‹œì‘ ì‹œ ì´ˆê¸°í™”
         StartBattle();
         battleLogText.text = text;
     }
@@ -32,12 +32,12 @@ public class BattleSystem : MonoBehaviour
         enemy.TakeDamage(damageDealt);
         WhatIdo.SetActive(true);
 
-        // ÀûÀÇ Ã¼·ÂÀÌ 0 ÀÌÇÏÀÎÁö È®ÀÎ
+        // ì ì˜ ì²´ë ¥ì´ 0 ì´í•˜ì¸ì§€ í™•ì¸
         if (enemy.currentHealth <= 0)
         {
             Gameoverpanel.SetActive(true);
-            battleResultText.text = "ÇÃ·¹ÀÌ¾î½Â!!";
-            Time.timeScale = 0f; // °ÔÀÓ ÀÏ½ÃÁ¤Áö
+            battleResultText.text = "í”Œë ˆì´ì–´ìŠ¹!!";
+            Time.timeScale = 0f; // ê²Œì„ ì¼ì‹œì •ì§€
         }
         
     }
@@ -51,19 +51,19 @@ public class BattleSystem : MonoBehaviour
             WhatIdo.SetActive(true);
         }
         
-        // ÇÃ·¹ÀÌ¾îÀÇ Ã¼·ÂÀÌ 0 ÀÌÇÏÀÎÁö È®ÀÎ
+        // í”Œë ˆì´ì–´ì˜ ì²´ë ¥ì´ 0 ì´í•˜ì¸ì§€ í™•ì¸
         if (player.currentHealth <= 0)
         {
             Gameoverpanel.SetActive(true);
-            battleResultText.text = "»ó´ëÀÇ ½Â...";
-            Time.timeScale = 0f; // °ÔÀÓ ÀÏ½ÃÁ¤Áö
+            battleResultText.text = "ìƒëŒ€ì˜ ìŠ¹...";
+            Time.timeScale = 0f; // ê²Œì„ ì¼ì‹œì •ì§€
         }
         
     }
 
     void Update()
     {
-        // TODO: »ç¿ëÀÚ ÀÔ·Â µîÀ» ¹Ş¾Æ ÅÏ ±â´ÉÀ» ±¸Çö
+        // TODO: ì‚¬ìš©ì ì…ë ¥ ë“±ì„ ë°›ì•„ í„´ ê¸°ëŠ¥ì„ êµ¬í˜„
         if (Input.GetKeyDown(KeyCode.Space))
         {
             PlayerAttack();
