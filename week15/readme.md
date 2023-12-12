@@ -41,3 +41,5 @@ https://assetstore.unity.com/packages/3d/characters/creatures/rpg-monster-duo-pb
 https://assetstore.unity.com/packages/3d/environments/historic/kcisa-jejumok-gwana-251450 (배경)​​<br>
 
 https://assetstore.unity.com/packages/audio/music/25-fantasy-rpg-game-tracks-music-pack-240154 (배경음)​<br>
+
+https://sketchfab.com/tiffany__37 - fbx를 다운받아 사용
