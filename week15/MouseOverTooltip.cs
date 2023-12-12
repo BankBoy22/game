@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class MouseOverTooltip : MonoBehaviour
 {
-    public GameObject tooltipText; // ¸¶¿ì½º¸¦ °¡Á®´Ù ´ë¸é ³ªÅ¸³¯ ÅøÆÁ ÅØ½ºÆ®
+    public GameObject tooltipText; // ë§ˆìš°ìŠ¤ë¥¼ ê°€ì ¸ë‹¤ ëŒ€ë©´ ë‚˜íƒ€ë‚  íˆ´íŒ í…ìŠ¤íŠ¸
 
     void Start()
     {
-        HideTooltip(); // ÃÊ±â¿¡´Â ÅøÆÁÀ» ¼û±é´Ï´Ù.
+        HideTooltip(); // ì´ˆê¸°ì—ëŠ” íˆ´íŒì„ ìˆ¨ê¹ë‹ˆë‹¤.
     }
 
     void Update()
@@ -16,7 +16,7 @@ public class MouseOverTooltip : MonoBehaviour
         Vector2 mousePosition = Input.mousePosition;
         Vector2 screenPoint = Camera.main.WorldToScreenPoint(transform.position);
 
-        // ¸¶¿ì½º°¡ ÀÌ¹ÌÁö À§¿¡ ÀÖ´ÂÁö È®ÀÎ
+        // ë§ˆìš°ìŠ¤ê°€ ì´ë¯¸ì§€ ìœ„ì— ìˆëŠ”ì§€ í™•ì¸
         if (RectTransformUtility.RectangleContainsScreenPoint(GetComponent<RectTransform>(), mousePosition))
         {
             ShowTooltip();
