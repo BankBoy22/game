@@ -5,52 +5,52 @@ using UnityEngine.SceneManagement;
 
 public class Main_Button : MonoBehaviour
 {
-    public GameObject gameModePanel; // °ÔÀÓ¸ğµå ¼±ÅÃ ÆĞ³Î ¿ÀºêÁ§Æ®
-    public GameObject settingPanel; // °ÔÀÓ¼³Á¤ ¼±ÅÃ ÆĞ³Î ¿ÀºêÁ§Æ®
+    public GameObject gameModePanel; // ê²Œì„ëª¨ë“œ ì„ íƒ íŒ¨ë„ ì˜¤ë¸Œì íŠ¸
+    public GameObject settingPanel; // ê²Œì„ì„¤ì • ì„ íƒ íŒ¨ë„ ì˜¤ë¸Œì íŠ¸
 
     void Start()
     {
-        // °ÔÀÓ ½ÃÀÛ ½Ã °ÔÀÓ¸ğµå ÆĞ³ÎÀ» ºñÈ°¼ºÈ­
+        // ê²Œì„ ì‹œì‘ ì‹œ ê²Œì„ëª¨ë“œ íŒ¨ë„ì„ ë¹„í™œì„±í™”
         if (gameModePanel != null)
         {
             gameModePanel.SetActive(false);
         }
     }
 
-    // °ÔÀÓ ½ÃÀÛ ¹öÆ°À» ´­·¶À» ¶§ È£ÃâµÇ´Â ÇÔ¼ö
+    // ê²Œì„ ì‹œì‘ ë²„íŠ¼ì„ ëˆŒë €ì„ ë•Œ í˜¸ì¶œë˜ëŠ” í•¨ìˆ˜
     public void OnGameStartButtonClicked()
     {
-        // °ÔÀÓ¸ğµå ÆĞ³ÎÀ» È°¼ºÈ­
+        // ê²Œì„ëª¨ë“œ íŒ¨ë„ì„ í™œì„±í™”
         if (gameModePanel != null)
         {
             gameModePanel.SetActive(true);
         }
     }
 
-    // X ¹öÆ°À» ´­·¶À» ¶§ È£ÃâµÇ´Â ÇÔ¼ö
+    // X ë²„íŠ¼ì„ ëˆŒë €ì„ ë•Œ í˜¸ì¶œë˜ëŠ” í•¨ìˆ˜
     public void OnCloseButtonClicked()
     {
-        // °ÔÀÓ¸ğµå ÆĞ³ÎÀ» ºñÈ°¼ºÈ­
+        // ê²Œì„ëª¨ë“œ íŒ¨ë„ì„ ë¹„í™œì„±í™”
         if (gameModePanel != null)
         {
             gameModePanel.SetActive(false);
         }
     }
 
-    // ¼¼ÆÃ ¹öÆ°À» ´­·ÈÀ»¶§ È£ÃâµÇ´Â ÇÔ¼ö
+    // ì„¸íŒ… ë²„íŠ¼ì„ ëˆŒë ¸ì„ë•Œ í˜¸ì¶œë˜ëŠ” í•¨ìˆ˜
     public void OnSettingButtonClicked()
     {
-        // °ÔÀÓ¸ğµå ÆĞ³ÎÀ» ºñÈ°¼ºÈ­
+        // ê²Œì„ëª¨ë“œ íŒ¨ë„ì„ ë¹„í™œì„±í™”
         if (settingPanel != null)
         {
             settingPanel.SetActive(true);
         }
     }
 
-    //¼¼ÆÃ ´İ±â ¹öÆ°À» ´­·ÈÀ»¶§ È£ÃâµÇ´Â ÇÔ¼ö
+    //ì„¸íŒ… ë‹«ê¸° ë²„íŠ¼ì„ ëˆŒë ¸ì„ë•Œ í˜¸ì¶œë˜ëŠ” í•¨ìˆ˜
     public void OnSettingcloseButtonClicked()
     {
-        // °ÔÀÓ¸ğµå ÆĞ³ÎÀ» ºñÈ°¼ºÈ­
+        // ê²Œì„ëª¨ë“œ íŒ¨ë„ì„ ë¹„í™œì„±í™”
         if (settingPanel != null)
         {
             settingPanel.SetActive(false);
@@ -77,13 +77,13 @@ public class Main_Button : MonoBehaviour
         SceneManager.LoadScene("Shop");
     }
 
-    //HomeÀ¸·Î ÀÌµ¿
+    //Homeìœ¼ë¡œ ì´ë™
     public void OnHomeButtonClicked()
     {
         SceneManager.LoadScene("Intro");
     }
 
-    //»Ì±âÈ­¸éÀ¸·Î ÀÌµ¿
+    //ë½‘ê¸°í™”ë©´ìœ¼ë¡œ ì´ë™
     public void OnGotchaClicked()
     {
         SceneManager.LoadScene("GotchaSceen");
