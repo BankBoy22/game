@@ -23,4 +23,21 @@ https://github.com/BankBoy22/game/assets/48702307/fef940ba-6a48-4fa1-bb5d-361d3f
 ![어드벤쳐화면](https://github.com/BankBoy22/game/assets/48702307/3770a969-4300-4dfa-bb9a-73175c188a1e)
 ## 배틀화면 
 https://github.com/BankBoy22/game/assets/48702307/f7862bc8-8850-4062-8638-11ba9ab7c661
+## 사용에셋
+https://assetstore.unity.com/packages/2d/gui/card-shirts-lite-165698 (카드 이미지)​<br>
 
+https://assetstore.unity.com/packages/vfx/red-hollow-skill-vfx-212627 (파티클)​​<br>
+
+https://assetstore.unity.com/packages/2d/textures-materials/sky/allsky-free-10-sky-skybox-set-146014 (스카이박스 이미지)​​<br>
+
+https://assetstore.unity.com/packages/3d/animations/basic-motions-157744 (애니메이션)​​<br>
+
+https://assetstore.unity.com/packages/essentials/starter-assets-thirdperson-updates-in-new-charactercontroller-pa-196526 (Third-Person Camera)​​<br>
+
+https://assetstore.unity.com/packages/2d/gui/icons/fantasy-free-gui-147682 (UI 버튼 이미지)​​<br>
+
+https://assetstore.unity.com/packages/3d/characters/creatures/rpg-monster-duo-pbr-polyart-157762 (몬스터)​​<br>
+
+https://assetstore.unity.com/packages/3d/environments/historic/kcisa-jejumok-gwana-251450 (배경)​​<br>
+
+https://assetstore.unity.com/packages/audio/music/25-fantasy-rpg-game-tracks-music-pack-240154 (배경음)​<br>
