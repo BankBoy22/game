@@ -6,8 +6,8 @@ public class Battle_Button : MonoBehaviour
 {
     public RedHollowControl redHollowControl;
     public GameObject WhatIdo; 
-    public GameObject Active; // Çàµ¿ UI
-    public GameObject Tenkai_button; // ¿µ¿ªÀü°³ ¹öÆ°
+    public GameObject Active; // í–‰ë™ UI
+    public GameObject Tenkai_button; // ì˜ì—­ì „ê°œ ë²„íŠ¼
     public AudioSource buttonAudioSource;  
     public AudioClip Aka;
     public AudioClip Aao;
@@ -15,13 +15,13 @@ public class Battle_Button : MonoBehaviour
     public AudioClip Tenkai;
 
     public BattleSystem battleSystem;
-    public SkyboxManager skyboxManager; // SkyboxManager ÂüÁ¶ Ãß°¡
-    public CharacterStats playerStats; // CharacterStats ÂüÁ¶ Ãß°¡
+    public SkyboxManager skyboxManager; // SkyboxManager ì°¸ì¡° ì¶”ê°€
+    public CharacterStats playerStats; // CharacterStats ì°¸ì¡° ì¶”ê°€
 
 
     private void Start()
     {
-        // Gojo Red Hollow ¿ÀºêÁ§Æ®¿¡ RedHollowControl ½ºÅ©¸³Æ®°¡ ¾ø´Ù¸é °æ°í ¸Ş½ÃÁö¸¦ Ãâ·Â
+        // Gojo Red Hollow ì˜¤ë¸Œì íŠ¸ì— RedHollowControl ìŠ¤í¬ë¦½íŠ¸ê°€ ì—†ë‹¤ë©´ ê²½ê³  ë©”ì‹œì§€ë¥¼ ì¶œë ¥
         if (redHollowControl == null)
         {
             Debug.LogWarning("RedHollowControl script is not assigned.");
@@ -30,7 +30,7 @@ public class Battle_Button : MonoBehaviour
 
     public void ClickBattleON()
     {
-        // ¼¼ÆÃ ÆĞ³Î È°¼ºÈ­
+        // ì„¸íŒ… íŒ¨ë„ í™œì„±í™”
         if (Active != null)
         {
             WhatIdo.SetActive(false);
@@ -40,7 +40,7 @@ public class Battle_Button : MonoBehaviour
 
     public void ClickActiveClose()
     {
-        // ¼¼ÆÃ ÆĞ³Î È°¼ºÈ­
+        // ì„¸íŒ… íŒ¨ë„ í™œì„±í™”
         if (WhatIdo != null)
         {
             WhatIdo.SetActive(true);
@@ -48,15 +48,15 @@ public class Battle_Button : MonoBehaviour
         }
     }
 
-    //¼ú½Ä¹İÀü ¾ÆÄ« ¹öÆ° Å¬¸¯ ½Ã ½ÇÇàµÉ ÇÔ¼ö
+    //ìˆ ì‹ë°˜ì „ ì•„ì¹´ ë²„íŠ¼ í´ë¦­ ì‹œ ì‹¤í–‰ë  í•¨ìˆ˜
     public void ClickAka()
     {
-        // È¿°úÀ½ Àç»ı
+        // íš¨ê³¼ìŒ ì¬ìƒ
         if (buttonAudioSource != null && Aka != null)
         {
             buttonAudioSource.PlayOneShot(Aka);
         }
-        // RedHollowControl ½ºÅ©¸³Æ®ÀÇ Play_Charging ÇÔ¼ö È£Ãâ
+        // RedHollowControl ìŠ¤í¬ë¦½íŠ¸ì˜ Play_Charging í•¨ìˆ˜ í˜¸ì¶œ
         if (redHollowControl != null)
         {
             redHollowControl.Play_Charging();
@@ -65,21 +65,21 @@ public class Battle_Button : MonoBehaviour
             Active.SetActive(false);
             redHollowControl.hue = 1.0F;
             battleSystem.PlayerAttack();
-            battleSystem.battleLogText.text = "Çõ";
+            battleSystem.battleLogText.text = "í˜";
             battleSystem.EnemyAttack();
     
         }
     }
 
-    //¼ú½Ä¼øÀü ¾Æ¿À ¹öÆ° Å¬¸¯ ½Ã ½ÇÇàµÉ ÇÔ¼ö
+    //ìˆ ì‹ìˆœì „ ì•„ì˜¤ ë²„íŠ¼ í´ë¦­ ì‹œ ì‹¤í–‰ë  í•¨ìˆ˜
     public void ClickAao()
     {
-        // È¿°úÀ½ Àç»ı
+        // íš¨ê³¼ìŒ ì¬ìƒ
         if (buttonAudioSource != null && Aao != null)
         {
             buttonAudioSource.PlayOneShot(Aao);
         }
-        // RedHollowControl ½ºÅ©¸³Æ®ÀÇ Play_Charging ÇÔ¼ö È£Ãâ
+        // RedHollowControl ìŠ¤í¬ë¦½íŠ¸ì˜ Play_Charging í•¨ìˆ˜ í˜¸ì¶œ
         if (redHollowControl != null)
         {
             redHollowControl.Play_Charging();
@@ -87,54 +87,54 @@ public class Battle_Button : MonoBehaviour
             Active.SetActive(false);
             redHollowControl.hue = 0.5F;
             battleSystem.PlayerAttack();
-            battleSystem.battleLogText.text = "Ã¢";
+            battleSystem.battleLogText.text = "ì°½";
             battleSystem.EnemyAttack();
 
         }
     }
 
-    //Çã½Ä ¹«¶ó»çÅ° ¹öÆ° Å¬¸¯ ½Ã ½ÇÇàµÉ ÇÔ¼ö
+    //í—ˆì‹ ë¬´ë¼ì‚¬í‚¤ ë²„íŠ¼ í´ë¦­ ì‹œ ì‹¤í–‰ë  í•¨ìˆ˜
     public void ClickMurasaki()
     {
-        // È¿°úÀ½ Àç»ı
+        // íš¨ê³¼ìŒ ì¬ìƒ
         if (buttonAudioSource != null && Murasaki != null)
         {
             buttonAudioSource.PlayOneShot(Murasaki);
         }
-        // RedHollowControl ½ºÅ©¸³Æ®ÀÇ Play_Charging ÇÔ¼ö È£Ãâ
+        // RedHollowControl ìŠ¤í¬ë¦½íŠ¸ì˜ Play_Charging í•¨ìˆ˜ í˜¸ì¶œ
         if (redHollowControl != null)
         {
             redHollowControl.Play_Charging();
             Active.SetActive(false);
             redHollowControl.hue = 0.8F;
             battleSystem.PlayerAttack();
-            battleSystem.battleLogText.text = "¹«¶ó»çÅ°";
+            battleSystem.battleLogText.text = "ë¬´ë¼ì‚¬í‚¤";
             battleSystem.EnemyAttack();
         }
     }
 
-    //¿µ¿ªÀü°³ ¹öÆ° Å¬¸¯ ½Ã ½ÇÇàµÉ ÇÔ¼ö
+    //ì˜ì—­ì „ê°œ ë²„íŠ¼ í´ë¦­ ì‹œ ì‹¤í–‰ë  í•¨ìˆ˜
     public void ClickTenkai()
     {
-        // È¿°úÀ½ Àç»ı
+        // íš¨ê³¼ìŒ ì¬ìƒ
         if (buttonAudioSource != null && Tenkai != null)
         {
             buttonAudioSource.PlayOneShot(Tenkai);
         }
-        // ¿µ¿ªÀü°³´Â ¹öÇÁ´Ù!
+        // ì˜ì—­ì „ê°œëŠ” ë²„í”„ë‹¤!
         if (redHollowControl != null)
         {
             Active.SetActive(false);
-            battleSystem.battleLogText.text = "¹«·®°øÃ³";
+            battleSystem.battleLogText.text = "ë¬´ëŸ‰ê³µì²˜";
             battleSystem.EnemyAttack();
 
-            // CharacterStatsÀÇ attackDamage¸¦ 15·Î º¯°æ
+            // CharacterStatsì˜ attackDamageë¥¼ 15ë¡œ ë³€ê²½
             playerStats.attackDamage = 15;
 
-            // ¿µ¿ªÀü°³ ¹öÆ°ÀÌ ´­¸®¸é ½ºÄ«ÀÌ¹Ú½º¸¦ º¯°æ
+            // ì˜ì—­ì „ê°œ ë²„íŠ¼ì´ ëˆŒë¦¬ë©´ ìŠ¤ì¹´ì´ë°•ìŠ¤ë¥¼ ë³€ê²½
             skyboxManager.SetExpandedSkybox();
 
-            //¹öÆ° Á¦°Å (¿µ¿ªÀü°³´Â ÇÑ °ÔÀÓ´ç ÇÑ¹ø¸¸ »ç¿ë°¡´ÉÇÔ)
+            //ë²„íŠ¼ ì œê±° (ì˜ì—­ì „ê°œëŠ” í•œ ê²Œì„ë‹¹ í•œë²ˆë§Œ ì‚¬ìš©ê°€ëŠ¥í•¨)
             Tenkai_button.SetActive(false);
         }
     }
