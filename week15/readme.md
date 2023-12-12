@@ -22,5 +22,5 @@ https://github.com/BankBoy22/game/assets/48702307/fef940ba-6a48-4fa1-bb5d-361d3f
 ## 어드벤쳐 씬
 ![어드벤쳐화면](https://github.com/BankBoy22/game/assets/48702307/3770a969-4300-4dfa-bb9a-73175c188a1e)
 ## 배틀화면 
-https://github.com/BankBoy22/game/assets/48702307/f8313968-52a2-4ad5-b603-edbb295bd28a
+https://github.com/BankBoy22/game/assets/48702307/f7862bc8-8850-4062-8638-11ba9ab7c661
 
