@@ -13,13 +13,13 @@ public class Stage1Manager : MonoBehaviour
 
     void Start()
     {
-        // ÇÃ·¹ÀÌ¾îÀÇ ÀÌ¸§À» °¡Á®¿Í¼­ NameText¿¡ Ç¥½Ã
+        // í”Œë ˆì´ì–´ì˜ ì´ë¦„ì„ ê°€ì ¸ì™€ì„œ NameTextì— í‘œì‹œ
         DisplayPlayerName();
     }
 
     void DisplayPlayerName()
     {
-        // PlayerPrefs¿¡¼­ ÀúÀåµÈ PlayerNameÀ» °¡Á®¿È
+        // PlayerPrefsì—ì„œ ì €ì¥ëœ PlayerNameì„ ê°€ì ¸ì˜´
         string playerName = PlayerPrefs.GetString("PlayerName", "DefaultName");
 
         nameText.text = playerName;
